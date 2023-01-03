@@ -1,6 +1,6 @@
 {
   "name": "Greeting",
-  "namespace": "org.as.devtechsolution",
+  "namespace": "org.as.devtechsolution.avro",
   "type": "record",
   "fields": [
     {

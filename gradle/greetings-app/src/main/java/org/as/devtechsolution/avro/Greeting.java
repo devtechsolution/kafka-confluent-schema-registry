@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package org.as.devtechsolution;
+package org.as.devtechsolution.avro;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Greeting extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -7190539088453947905L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Greeting\",\"namespace\":\"org.as.devtechsolution\",\"fields\":[{\"name\":\"greeting\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  private static final long serialVersionUID = -5344427839766600128L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Greeting\",\"namespace\":\"org.as.devtechsolution.avro\",\"fields\":[{\"name\":\"greeting\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -128,8 +128,8 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
    * Creates a new Greeting RecordBuilder.
    * @return A new Greeting RecordBuilder
    */
-  public static org.as.devtechsolution.Greeting.Builder newBuilder() {
-    return new org.as.devtechsolution.Greeting.Builder();
+  public static org.as.devtechsolution.avro.Greeting.Builder newBuilder() {
+    return new org.as.devtechsolution.avro.Greeting.Builder();
   }
 
   /**
@@ -137,11 +137,11 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing builder to copy.
    * @return A new Greeting RecordBuilder
    */
-  public static org.as.devtechsolution.Greeting.Builder newBuilder(org.as.devtechsolution.Greeting.Builder other) {
+  public static org.as.devtechsolution.avro.Greeting.Builder newBuilder(org.as.devtechsolution.avro.Greeting.Builder other) {
     if (other == null) {
-      return new org.as.devtechsolution.Greeting.Builder();
+      return new org.as.devtechsolution.avro.Greeting.Builder();
     } else {
-      return new org.as.devtechsolution.Greeting.Builder(other);
+      return new org.as.devtechsolution.avro.Greeting.Builder(other);
     }
   }
 
@@ -150,11 +150,11 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing instance to copy.
    * @return A new Greeting RecordBuilder
    */
-  public static org.as.devtechsolution.Greeting.Builder newBuilder(org.as.devtechsolution.Greeting other) {
+  public static org.as.devtechsolution.avro.Greeting.Builder newBuilder(org.as.devtechsolution.avro.Greeting other) {
     if (other == null) {
-      return new org.as.devtechsolution.Greeting.Builder();
+      return new org.as.devtechsolution.avro.Greeting.Builder();
     } else {
-      return new org.as.devtechsolution.Greeting.Builder(other);
+      return new org.as.devtechsolution.avro.Greeting.Builder(other);
     }
   }
 
@@ -176,7 +176,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(org.as.devtechsolution.Greeting.Builder other) {
+    private Builder(org.as.devtechsolution.avro.Greeting.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.greeting)) {
         this.greeting = data().deepCopy(fields()[0].schema(), other.greeting);
@@ -188,7 +188,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Greeting instance
      * @param other The existing instance to copy.
      */
-    private Builder(org.as.devtechsolution.Greeting other) {
+    private Builder(org.as.devtechsolution.avro.Greeting other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.greeting)) {
         this.greeting = data().deepCopy(fields()[0].schema(), other.greeting);
@@ -210,7 +210,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'greeting'.
       * @return This builder.
       */
-    public org.as.devtechsolution.Greeting.Builder setGreeting(java.lang.String value) {
+    public org.as.devtechsolution.avro.Greeting.Builder setGreeting(java.lang.String value) {
       validate(fields()[0], value);
       this.greeting = value;
       fieldSetFlags()[0] = true;
@@ -230,7 +230,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'greeting' field.
       * @return This builder.
       */
-    public org.as.devtechsolution.Greeting.Builder clearGreeting() {
+    public org.as.devtechsolution.avro.Greeting.Builder clearGreeting() {
       greeting = null;
       fieldSetFlags()[0] = false;
       return this;
