@@ -1,0 +1,11 @@
+{
+  "name": "Greeting",
+  "namespace": "org.as.devtechsolution",
+  "type": "record",
+  "fields": [
+    {
+      "name": "greeting",
+      "type": "string"
+    }
+  ]
+}
