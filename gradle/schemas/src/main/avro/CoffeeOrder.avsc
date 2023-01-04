@@ -1,0 +1,40 @@
+{
+  "name": "CoffeeOrder",
+  "namespace": "org.as.devtechsolution.domain.generated",
+  "type": "record",
+  "fields": [
+    {
+      "name": "id",
+      "type": "int"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "nickname",
+      "type": "string",
+      "default": "",
+      "doc": "Optional field represents the nick name for the user"
+    },
+    {
+      "name": "store",
+      "type": "Store"
+    },
+    {
+      "name": "orderLineItems",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "OrderLineItem",
+          "name": "orderLineItem"
+
+        }
+      }
+    },
+    {
+      "name": "status",
+      "type": "string"
+    }
+  ]
+}
