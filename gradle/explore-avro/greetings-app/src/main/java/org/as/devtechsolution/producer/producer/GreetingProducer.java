@@ -1,9 +1,9 @@
-package org.as.devtechsolution.producer;
+package org.as.devtechsolution.producer.producer;
 
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.ByteArraySerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.as.devtechsolution.avro.Greeting;
+import org.as.devtechsolution.producer.avro.Greeting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

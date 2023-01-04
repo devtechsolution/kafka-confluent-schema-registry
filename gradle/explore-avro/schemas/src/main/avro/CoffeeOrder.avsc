@@ -3,9 +3,16 @@
   "namespace": "org.as.devtechsolution.domain.generated",
   "type": "record",
   "fields": [
+//    {
+//      "name": "id",
+//      "type": "int"
+//    },
     {
       "name": "id",
-      "type": "int"
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
     },
     {
       "name": "name",
@@ -34,7 +41,22 @@
     },
     {
       "name": "status",
-      "type": "string"
+      "type": "string",
+      "default": "NEW"
+    },
+    {
+      "name": "ordered_time",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "ordered_date",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
     }
   ]
 }

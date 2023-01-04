@@ -14,11 +14,17 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5935224513106955697L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"org.as.devtechsolution.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nickname\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Optional field represents the nick name for the user\",\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"city\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"state_province\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"country\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"zip\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"}]}}},{\"name\":\"status\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  private static final long serialVersionUID = -3830117040890990356L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"org.as.devtechsolution.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nickname\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Optional field represents the nick name for the user\",\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"city\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"state_province\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"country\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"zip\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"status\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"NEW\"},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"ordered_date\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
+static {
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.DateConversion());
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.UUIDConversion());
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.DecimalConversion());
+  }
 
   private static final BinaryMessageEncoder<CoffeeOrder> ENCODER =
       new BinaryMessageEncoder<CoffeeOrder>(MODEL$, SCHEMA$);
@@ -71,13 +77,15 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
     return DECODER.decode(b);
   }
 
-  @Deprecated public int id;
+  @Deprecated public java.util.UUID id;
   @Deprecated public java.lang.String name;
   /** Optional field represents the nick name for the user */
   @Deprecated public java.lang.String nickname;
   @Deprecated public org.as.devtechsolution.domain.generated.Store store;
   @Deprecated public java.util.List<org.as.devtechsolution.domain.generated.OrderLineItem> orderLineItems;
   @Deprecated public java.lang.String status;
+  @Deprecated public java.time.Instant ordered_time;
+  @Deprecated public java.time.LocalDate ordered_date;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -94,14 +102,18 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
    * @param store The new value for store
    * @param orderLineItems The new value for orderLineItems
    * @param status The new value for status
+   * @param ordered_time The new value for ordered_time
+   * @param ordered_date The new value for ordered_date
    */
-  public CoffeeOrder(java.lang.Integer id, java.lang.String name, java.lang.String nickname, org.as.devtechsolution.domain.generated.Store store, java.util.List<org.as.devtechsolution.domain.generated.OrderLineItem> orderLineItems, java.lang.String status) {
+  public CoffeeOrder(java.util.UUID id, java.lang.String name, java.lang.String nickname, org.as.devtechsolution.domain.generated.Store store, java.util.List<org.as.devtechsolution.domain.generated.OrderLineItem> orderLineItems, java.lang.String status, java.time.Instant ordered_time, java.time.LocalDate ordered_date) {
     this.id = id;
     this.name = name;
     this.nickname = nickname;
     this.store = store;
     this.orderLineItems = orderLineItems;
     this.status = status;
+    this.ordered_time = ordered_time.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+    this.ordered_date = ordered_date;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -115,20 +127,42 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
     case 3: return store;
     case 4: return orderLineItems;
     case 5: return status;
+    case 6: return ordered_time;
+    case 7: return ordered_date;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
+  }
+
+  private static final org.apache.avro.Conversion<?>[] conversions =
+      new org.apache.avro.Conversion<?>[] {
+      new org.apache.avro.Conversions.UUIDConversion(),
+      null,
+      null,
+      null,
+      null,
+      null,
+      new org.apache.avro.data.TimeConversions.TimestampMillisConversion(),
+      new org.apache.avro.data.TimeConversions.DateConversion(),
+      null
+  };
+
+  @Override
+  public org.apache.avro.Conversion<?> getConversion(int field) {
+    return conversions[field];
   }
 
   // Used by DatumReader.  Applications should not call.
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (java.lang.Integer)value$; break;
+    case 0: id = (java.util.UUID)value$; break;
     case 1: name = value$ != null ? value$.toString() : null; break;
     case 2: nickname = value$ != null ? value$.toString() : null; break;
     case 3: store = (org.as.devtechsolution.domain.generated.Store)value$; break;
     case 4: orderLineItems = (java.util.List<org.as.devtechsolution.domain.generated.OrderLineItem>)value$; break;
     case 5: status = value$ != null ? value$.toString() : null; break;
+    case 6: ordered_time = (java.time.Instant)value$; break;
+    case 7: ordered_date = (java.time.LocalDate)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -137,7 +171,7 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'id' field.
    * @return The value of the 'id' field.
    */
-  public int getId() {
+  public java.util.UUID getId() {
     return id;
   }
 
@@ -146,7 +180,7 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setId(int value) {
+  public void setId(java.util.UUID value) {
     this.id = value;
   }
 
@@ -237,6 +271,40 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
   }
 
   /**
+   * Gets the value of the 'ordered_time' field.
+   * @return The value of the 'ordered_time' field.
+   */
+  public java.time.Instant getOrderedTime() {
+    return ordered_time;
+  }
+
+
+  /**
+   * Sets the value of the 'ordered_time' field.
+   * @param value the value to set.
+   */
+  public void setOrderedTime(java.time.Instant value) {
+    this.ordered_time = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+  }
+
+  /**
+   * Gets the value of the 'ordered_date' field.
+   * @return The value of the 'ordered_date' field.
+   */
+  public java.time.LocalDate getOrderedDate() {
+    return ordered_date;
+  }
+
+
+  /**
+   * Sets the value of the 'ordered_date' field.
+   * @param value the value to set.
+   */
+  public void setOrderedDate(java.time.LocalDate value) {
+    this.ordered_date = value;
+  }
+
+  /**
    * Creates a new CoffeeOrder RecordBuilder.
    * @return A new CoffeeOrder RecordBuilder
    */
@@ -277,7 +345,7 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<CoffeeOrder>
     implements org.apache.avro.data.RecordBuilder<CoffeeOrder> {
 
-    private int id;
+    private java.util.UUID id;
     private java.lang.String name;
     /** Optional field represents the nick name for the user */
     private java.lang.String nickname;
@@ -285,6 +353,8 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
     private org.as.devtechsolution.domain.generated.Store.Builder storeBuilder;
     private java.util.List<org.as.devtechsolution.domain.generated.OrderLineItem> orderLineItems;
     private java.lang.String status;
+    private java.time.Instant ordered_time;
+    private java.time.LocalDate ordered_date;
 
     /** Creates a new Builder */
     private Builder() {
@@ -324,6 +394,14 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
         this.status = data().deepCopy(fields()[5].schema(), other.status);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
+      if (isValidValue(fields()[6], other.ordered_time)) {
+        this.ordered_time = data().deepCopy(fields()[6].schema(), other.ordered_time);
+        fieldSetFlags()[6] = other.fieldSetFlags()[6];
+      }
+      if (isValidValue(fields()[7], other.ordered_date)) {
+        this.ordered_date = data().deepCopy(fields()[7].schema(), other.ordered_date);
+        fieldSetFlags()[7] = other.fieldSetFlags()[7];
+      }
     }
 
     /**
@@ -357,13 +435,21 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
         this.status = data().deepCopy(fields()[5].schema(), other.status);
         fieldSetFlags()[5] = true;
       }
+      if (isValidValue(fields()[6], other.ordered_time)) {
+        this.ordered_time = data().deepCopy(fields()[6].schema(), other.ordered_time);
+        fieldSetFlags()[6] = true;
+      }
+      if (isValidValue(fields()[7], other.ordered_date)) {
+        this.ordered_date = data().deepCopy(fields()[7].schema(), other.ordered_date);
+        fieldSetFlags()[7] = true;
+      }
     }
 
     /**
       * Gets the value of the 'id' field.
       * @return The value.
       */
-    public int getId() {
+    public java.util.UUID getId() {
       return id;
     }
 
@@ -373,7 +459,7 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public org.as.devtechsolution.domain.generated.CoffeeOrder.Builder setId(int value) {
+    public org.as.devtechsolution.domain.generated.CoffeeOrder.Builder setId(java.util.UUID value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -394,6 +480,7 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public org.as.devtechsolution.domain.generated.CoffeeOrder.Builder clearId() {
+      id = null;
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -638,12 +725,90 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
       return this;
     }
 
+    /**
+      * Gets the value of the 'ordered_time' field.
+      * @return The value.
+      */
+    public java.time.Instant getOrderedTime() {
+      return ordered_time;
+    }
+
+
+    /**
+      * Sets the value of the 'ordered_time' field.
+      * @param value The value of 'ordered_time'.
+      * @return This builder.
+      */
+    public org.as.devtechsolution.domain.generated.CoffeeOrder.Builder setOrderedTime(java.time.Instant value) {
+      validate(fields()[6], value);
+      this.ordered_time = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+      fieldSetFlags()[6] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'ordered_time' field has been set.
+      * @return True if the 'ordered_time' field has been set, false otherwise.
+      */
+    public boolean hasOrderedTime() {
+      return fieldSetFlags()[6];
+    }
+
+
+    /**
+      * Clears the value of the 'ordered_time' field.
+      * @return This builder.
+      */
+    public org.as.devtechsolution.domain.generated.CoffeeOrder.Builder clearOrderedTime() {
+      fieldSetFlags()[6] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'ordered_date' field.
+      * @return The value.
+      */
+    public java.time.LocalDate getOrderedDate() {
+      return ordered_date;
+    }
+
+
+    /**
+      * Sets the value of the 'ordered_date' field.
+      * @param value The value of 'ordered_date'.
+      * @return This builder.
+      */
+    public org.as.devtechsolution.domain.generated.CoffeeOrder.Builder setOrderedDate(java.time.LocalDate value) {
+      validate(fields()[7], value);
+      this.ordered_date = value;
+      fieldSetFlags()[7] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'ordered_date' field has been set.
+      * @return True if the 'ordered_date' field has been set, false otherwise.
+      */
+    public boolean hasOrderedDate() {
+      return fieldSetFlags()[7];
+    }
+
+
+    /**
+      * Clears the value of the 'ordered_date' field.
+      * @return This builder.
+      */
+    public org.as.devtechsolution.domain.generated.CoffeeOrder.Builder clearOrderedDate() {
+      fieldSetFlags()[7] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public CoffeeOrder build() {
       try {
         CoffeeOrder record = new CoffeeOrder();
-        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Integer) defaultValue(fields()[0]);
+        record.id = fieldSetFlags()[0] ? this.id : (java.util.UUID) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.String) defaultValue(fields()[1]);
         record.nickname = fieldSetFlags()[2] ? this.nickname : (java.lang.String) defaultValue(fields()[2]);
         if (storeBuilder != null) {
@@ -658,6 +823,8 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
         }
         record.orderLineItems = fieldSetFlags()[4] ? this.orderLineItems : (java.util.List<org.as.devtechsolution.domain.generated.OrderLineItem>) defaultValue(fields()[4]);
         record.status = fieldSetFlags()[5] ? this.status : (java.lang.String) defaultValue(fields()[5]);
+        record.ordered_time = fieldSetFlags()[6] ? this.ordered_time : (java.time.Instant) defaultValue(fields()[6]);
+        record.ordered_date = fieldSetFlags()[7] ? this.ordered_date : (java.time.LocalDate) defaultValue(fields()[7]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -685,124 +852,6 @@ public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase imp
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  @Override protected boolean hasCustomCoders() { return true; }
-
-  @Override public void customEncode(org.apache.avro.io.Encoder out)
-    throws java.io.IOException
-  {
-    out.writeInt(this.id);
-
-    out.writeString(this.name);
-
-    out.writeString(this.nickname);
-
-    this.store.customEncode(out);
-
-    long size0 = this.orderLineItems.size();
-    out.writeArrayStart();
-    out.setItemCount(size0);
-    long actualSize0 = 0;
-    for (org.as.devtechsolution.domain.generated.OrderLineItem e0: this.orderLineItems) {
-      actualSize0++;
-      out.startItem();
-      e0.customEncode(out);
-    }
-    out.writeArrayEnd();
-    if (actualSize0 != size0)
-      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
-
-    out.writeString(this.status);
-
-  }
-
-  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-    throws java.io.IOException
-  {
-    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-    if (fieldOrder == null) {
-      this.id = in.readInt();
-
-      this.name = in.readString();
-
-      this.nickname = in.readString();
-
-      if (this.store == null) {
-        this.store = new org.as.devtechsolution.domain.generated.Store();
-      }
-      this.store.customDecode(in);
-
-      long size0 = in.readArrayStart();
-      java.util.List<org.as.devtechsolution.domain.generated.OrderLineItem> a0 = this.orderLineItems;
-      if (a0 == null) {
-        a0 = new SpecificData.Array<org.as.devtechsolution.domain.generated.OrderLineItem>((int)size0, SCHEMA$.getField("orderLineItems").schema());
-        this.orderLineItems = a0;
-      } else a0.clear();
-      SpecificData.Array<org.as.devtechsolution.domain.generated.OrderLineItem> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<org.as.devtechsolution.domain.generated.OrderLineItem>)a0 : null);
-      for ( ; 0 < size0; size0 = in.arrayNext()) {
-        for ( ; size0 != 0; size0--) {
-          org.as.devtechsolution.domain.generated.OrderLineItem e0 = (ga0 != null ? ga0.peek() : null);
-          if (e0 == null) {
-            e0 = new org.as.devtechsolution.domain.generated.OrderLineItem();
-          }
-          e0.customDecode(in);
-          a0.add(e0);
-        }
-      }
-
-      this.status = in.readString();
-
-    } else {
-      for (int i = 0; i < 6; i++) {
-        switch (fieldOrder[i].pos()) {
-        case 0:
-          this.id = in.readInt();
-          break;
-
-        case 1:
-          this.name = in.readString();
-          break;
-
-        case 2:
-          this.nickname = in.readString();
-          break;
-
-        case 3:
-          if (this.store == null) {
-            this.store = new org.as.devtechsolution.domain.generated.Store();
-          }
-          this.store.customDecode(in);
-          break;
-
-        case 4:
-          long size0 = in.readArrayStart();
-          java.util.List<org.as.devtechsolution.domain.generated.OrderLineItem> a0 = this.orderLineItems;
-          if (a0 == null) {
-            a0 = new SpecificData.Array<org.as.devtechsolution.domain.generated.OrderLineItem>((int)size0, SCHEMA$.getField("orderLineItems").schema());
-            this.orderLineItems = a0;
-          } else a0.clear();
-          SpecificData.Array<org.as.devtechsolution.domain.generated.OrderLineItem> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<org.as.devtechsolution.domain.generated.OrderLineItem>)a0 : null);
-          for ( ; 0 < size0; size0 = in.arrayNext()) {
-            for ( ; size0 != 0; size0--) {
-              org.as.devtechsolution.domain.generated.OrderLineItem e0 = (ga0 != null ? ga0.peek() : null);
-              if (e0 == null) {
-                e0 = new org.as.devtechsolution.domain.generated.OrderLineItem();
-              }
-              e0.customDecode(in);
-              a0.add(e0);
-            }
-          }
-          break;
-
-        case 5:
-          this.status = in.readString();
-          break;
-
-        default:
-          throw new java.io.IOException("Corrupt ResolvingDecoder.");
-        }
-      }
-    }
-  }
 }
 
 
